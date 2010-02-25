@@ -1,4 +1,6 @@
-Name:		pykickstart
+%define srcname pykickstart
+
+Name:		python-kickstart
 Version:	1.68
 Release:	%mkrel 1
 Summary:	A python library for manipulating kickstart files
@@ -8,7 +10,7 @@ Group:		Development/Python
 # within the srpm:
 # http://download.fedora.redhat.com/pub/fedora/linux/development/source/SRPMS/
 # or git git://git.fedorahosted.org/git/pykickstart.git
-Source0:	%{name}-%{version}.tar.gz
+Source0:	%{srcname}-%{version}.tar.gz
 Url:		http://fedoraproject.org/wiki/pykickstart
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:	python-devel
@@ -18,10 +20,10 @@ BuildArch:	noarch
 Requires:	python-urlgrabber
 
 %description
-The pykickstart package is a python library for manipulating kickstart files.
+The python-kickstart package is a python library for manipulating kickstart files.
 
 %prep
-%setup -q
+%setup -q -n %{srcname}-%{version}
 
 %build
 %make
@@ -29,12 +31,12 @@ The pykickstart package is a python library for manipulating kickstart files.
 %install
 rm -rf %{buildroot}
 make DESTDIR=%{buildroot} install
-%find_lang %{name}
+%find_lang %{srcname}
 
 %clean
 rm -rf %{buildroot}
 
-%files -f %{name}.lang
+%files -f %{srcname}.lang
 %defattr(-,root,root,-)
 %doc README ChangeLog COPYING docs/programmers-guide
 %doc docs/kickstart-docs.txt
