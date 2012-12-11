@@ -44,3 +44,15 @@ rm -rf %{buildroot}
 %{_bindir}/ksvalidator
 %{_bindir}/ksflatten
 %{_bindir}/ksverdiff
+
+
+%changelog
+* Thu Feb 25 2010 Ahmad Samir <ahmadsamir@mandriva.org> 1.68-1mdv2011.0
++ Revision: 511247
+- adapt spec to package renaming
+- rename package to comply with naming policy
+
+* Thu Feb 25 2010 Ahmad Samir <ahmadsamir@mandriva.org> 1.68-1mdv2010.1
++ Revision: 511214
+- import pykickstart
+
