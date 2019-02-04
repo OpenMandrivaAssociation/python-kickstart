@@ -1,54 +1,69 @@
 %define srcname pykickstart
 
 Name:		python-kickstart
-Version:	1.68
-Release:	3
-Summary:	A python library for manipulating kickstart files
-License:	GPLv2
+Version:	3.18
+Release:	1
+License:	GPLv2 and MIT
 Group:		Development/Python
+Summary:	Python library and tools for manipulating kickstart files
+URL:		http://fedoraproject.org/wiki/pykickstart
 # This is a Red Hat maintained package. Thus the source is only available from
 # within the srpm:
-# http://download.fedora.redhat.com/pub/fedora/linux/development/source/SRPMS/
-# or git git://git.fedorahosted.org/git/pykickstart.git
+# https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/SRPMS/Packages/p/
+# or git: git://github.com/rhinstaller/pykickstart.git
 Source0:	%{srcname}-%{version}.tar.gz
-Url:		http://fedoraproject.org/wiki/pykickstart
-BuildRequires:	python-devel
-BuildRequires:	python-setuptools
-BuildRequires:	gettext
+
 BuildArch:	noarch
-Requires:	python-urlgrabber
+
+BuildRequires:	gettext
+
+BuildRequires:	python-devel
+BuildRequires:	python-ordered-set
+BuildRequires:	python-setuptools
+BuildRequires:	python-requests
+BuildRequires:	python-six
+Requires: 	python-six
+Requires: 	python-requests
+Requires: 	python-ordered-set
+# Proper package name for this module
+Provides:	python-pykickstart = %{version}-%{release}
+# Fedora package name for utilities
+Provides:	pykickstart = %{version}-%{release}
+# Mageia package name for utilities
+Provides:	python-kickstart-utils = %{version}-%{release}
+# Mageia package name for Python module
+Provides:	python3-kickstart = %{version}-%{release}
+# Fedora package name for Python module
+Provides:	python3-pykickstart = %{version}-%{release}
 
 %description
-The python-kickstart package is a python library for manipulating kickstart
-files.
+Python library and tools for manipulating kickstart files.
+
 
 %prep
-%setup -q -n %{srcname}-%{version}
+%autosetup -n %{srcname}-%{version} -p1
+
 
 %build
-%make
+make PYTHON=%{__python3}
+
 
 %install
-make DESTDIR=%{buildroot} install
-%find_lang %{srcname}
+%make_install PYTHON=%{__python3}
 
-%files -f %{srcname}.lang
-%defattr(-,root,root,-)
-%doc README ChangeLog COPYING docs/programmers-guide
+
+%files
+%license COPYING
+%doc README.rst
+%doc data/kickstart.vim
+%doc docs/2to3
+%doc docs/programmers-guide
 %doc docs/kickstart-docs.txt
-%{python_sitelib}/*
 %{_bindir}/ksvalidator
 %{_bindir}/ksflatten
 %{_bindir}/ksverdiff
-
-
-%changelog
-* Thu Feb 25 2010 Ahmad Samir <ahmadsamir@mandriva.org> 1.68-1mdv2011.0
-+ Revision: 511247
-- adapt spec to package renaming
-- rename package to comply with naming policy
-
-* Thu Feb 25 2010 Ahmad Samir <ahmadsamir@mandriva.org> 1.68-1mdv2010.1
-+ Revision: 511214
-- import pykickstart
+%{_bindir}/ksshell
+%{_mandir}/man1/*
+%{python3_sitelib}/pykickstart/
+%{python3_sitelib}/pykickstart*.egg-info
 
