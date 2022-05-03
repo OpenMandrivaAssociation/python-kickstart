@@ -2,7 +2,7 @@
 
 Name:		python-kickstart
 Version:	3.18
-Release:	2
+Release:	3
 License:	GPLv2 and MIT
 Group:		Development/Python
 Summary:	Python library and tools for manipulating kickstart files
