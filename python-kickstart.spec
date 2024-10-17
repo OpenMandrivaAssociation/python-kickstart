@@ -6,7 +6,7 @@ Release:	4
 License:	GPLv2 and MIT
 Group:		Development/Python
 Summary:	Python library and tools for manipulating kickstart files
-URL:		http://fedoraproject.org/wiki/pykickstart
+URL:		https://fedoraproject.org/wiki/pykickstart
 # This is a Red Hat maintained package. Thus the source is only available from
 # within the srpm:
 # https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/SRPMS/Packages/p/
