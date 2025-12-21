@@ -15,6 +15,7 @@ Source0:	%{srcname}-%{version}.tar.gz
 
 BuildArch:	noarch
 
+BuildRequires:	make
 BuildRequires:	gettext
 
 BuildRequires:	python-devel
