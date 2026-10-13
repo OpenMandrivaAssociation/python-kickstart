@@ -2,7 +2,7 @@
 
 Name:		python-kickstart
 Version:	3.18
-Release:	6
+Release:	7
 License:	GPLv2 and MIT
 Group:		Development/Python
 Summary:	Python library and tools for manipulating kickstart files
@@ -18,7 +18,7 @@ BuildArch:	noarch
 BuildRequires:	make
 BuildRequires:	gettext
 
-BuildRequires:	python-devel
+BuildRequires:	pkgconfig(python3)
 BuildRequires:	python-ordered-set
 BuildRequires:	python-setuptools
 BuildRequires:	python-requests
